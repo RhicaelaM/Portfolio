@@ -1,0 +1,23 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname robot-nav) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+;; *******************************************
+;;     Rhicaela Miranda (21096228)
+;;     CS 135 Fall 2024
+;;     Assignment 03, Problem 3
+;; *******************************************
+
+;;
+;; Part A
+;;
+
+(define-struct state (x y dir))
+
+;;
+;; Part B
+;;
+
+(define (robot-ctl) (
+                     
+                     )
+  )

@@ -1,0 +1,48 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname listfun) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor mixed-fraction #f #t none #f () #t)))
+;; *******************************************
+;;     Rhicaela Miranda (21096228)
+;;     CS 135 Fall 2024
+;;     Assignment 04, Problem 2
+;; *******************************************
+
+;;
+;; Part A
+;;
+
+;; (list-has-exactly-4-symbols) consumes a list and determines if the list contains exactly 4 symbols.
+;; Returns true if there are exactly 4 symbols, otherwise returns false
+
+;; Examples
+(check-expect (list-has-exactly-4-symbols (cons 'Red
+                                                (cons "Blue"
+                                                      (cons "Yellow"
+                                                            (cons 'Green
+                                                                  (cons 1 empty)))))) false)
+(check-expect (list-has-exactly-4-symbols (cons 'Mama
+                                                (cons 'a
+                                                      (cons 'girl
+                                                            (cons 'behind
+                                                                  (cons "you" empty)))))) true)
+
+
+;; list-has-exactly-4-symbols: (list of (anyof Num Str Bool Sym)) -> Bool
+
+(define (list-has-exactly-4-symbols lst)
+
+  ; helper function that counts symbols in the list
+  (define (count-symbols lst)
+    (cond [(empty? lst) 0] ; if the list is empty, return 0
+
+          ; if first element is a symbol, adds 1, and recurses 
+          [(symbol? (first lst)) (+ 1 (count-symbols (rest lst)))]
+          [else
+           (count-symbols (rest lst))])) ; if not a symbol, recurses on rest of list
+
+  (= 4 (count-symbols lst))) ; Compares the count of symbols to 4
+  
+
+;; Tests
+(check-expect (list-has-exactly-4-symbols (list 'one 'two 'three 'four 5 "hello" true)) true)
+(check-expect (list-has-exactly-4-symbols (list 'one 'two "hello" false 10)) false)
